@@ -1,0 +1,89 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<!-- Created by TopStyle Pro Trial Version - www.bradsoft.com -->
+	<title></title>
+	<script type="text/javascript">
+		function validateUser(){
+			var username = document.getElementById("username");
+			if(/^[0-9a-zA-Z]{6,20}$/.test(username.value)){
+				username.nextSibling.innerHTML = "输入正确";
+				username.nextSibling.style.color = "green";
+				return true;
+			}else{
+				username.nextSibling.innerHTML = "输入有误，请输入6-20位字母或数字";
+				username.nextSibling.style.color = "red";
+				return false;
+			}
+		}
+		function validatePwd(){
+			var pwd = document.getElementById("pwd");
+
+			if(/^.{6,}$/.test(pwd.value)){
+				pwd.nextSibling.innerHTML = "输入正确";
+				pwd.nextSibling.style.color = "green";
+				return true;
+			}else{
+				pwd.nextSibling.innerHTML = "输入有误，请输入不少于6位的密码";
+				pwd.nextSibling.style.color = "red";
+				return false;
+			}		
+		}
+		function validateConfirmPwd(){
+			var confirmPwd = document.getElementById("confirmPwd");
+			if(/^.{6,}$/.test(confirmPwd.value)){
+				if(document.getElementById("pwd").value == confirmPwd.value){
+					confirmPwd.nextSibling.innerHTML = "输入正确";
+					confirmPwd.nextSibling.style.color = "green";
+					return true;
+				}else{
+					confirmPwd.nextSibling.innerHTML = "两次密码不一致";
+					confirmPwd.nextSibling.style.color = "red";
+					return false;
+				}
+				
+			}else{
+				confirmPwd.nextSibling.innerHTML = "输入有误，请输入不少于6位的密码";
+				confirmPwd.nextSibling.style.color = "red";
+				return false;
+			}			
+		}
+		function validate(){
+			if(validateUser() & validatePwd() & validateConfirmPwd()){
+				return true;
+			}		
+			return false;
+		}
+	</script>
+</head>
+
+<body>
+	<form action="#" method="post" onsubmit="return validate()">
+		<fieldset>
+			<p>
+				用户名：<input type="text" id="username" maxlength="20" onblur="validateUser()"/><label></label>
+			</p>
+			<p>
+				密码：<input type="password" id="pwd" onblur="validatePwd()"/><label></label>
+			</p>			
+			<p>
+				确认密码：<input type="password" id="confirmPwd" onblur="validateConfirmPwd()"/><label></label>
+			</p>						
+			<p>
+				邮箱地址：<input type="text" id="email"/><label></label>
+			</p>			
+			<p>
+				身份证：<input type="text" id="idCard"/><label></label>
+			</p>			
+			<p>
+				验证码：<input type="text" id="code"/><img id="imgCode" src="" /><label></label>
+			</p>			
+			<p>
+				<input type="submit" value="提交" />
+				<input type="reset" value="重置" />				
+			</p>			
+		</fieldset>
+	</form>
+</body>
+</html>

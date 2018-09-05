@@ -1,0 +1,34 @@
+<html>
+	<head>
+		<title></title>
+		<link rel="stylesheet" href="../../../js/ztree/css/zTreeStyle/zTreeStyle.css" type="text/css">
+		<script type="text/javascript" src="../../../js/jquery-1.7.1.min.js"></script>
+		<script type="text/javascript" src="../../../js/ztree/js/jquery.ztree.all-3.1.min.js"></script>
+		<script type="text/javascript">
+			var setting = {
+				data: {
+					simpleData: {
+						enable: true
+					}
+				}
+			};
+			
+			var zNodes =[
+				{id:1,pId:0,name:"账户",open:true},
+				{id:11,pId:1,name:"娃娃"},
+				{id:111,pId:11,name:"叶子1",url:"testui.html",target:"ifm"},
+				{id:112,pId:11,name:"叶子2",url:"homework.html",target:"ifm"},
+				{id:12,pId:1,name:"提提",isParent:true}
+							
+			];
+			$(function(){
+				$.fn.zTree.init($("#tree"), setting, zNodes);
+			})
+		</script>
+	</head>
+
+	<body>
+		<ul id="tree" class="ztree"></ul>
+		<iframe src="testui.html" name="ifm"></iframe>
+	</body>
+</html>

@@ -1,0 +1,82 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<!-- Created by TopStyle Pro Trial Version - www.bradsoft.com -->
+	<title></title>
+	<style type="text/css">
+		#d1{
+			border:1px solid red;
+		}
+	</style>
+	<script type="text/javascript" src="jquery-1.7.1.min.js"></script>
+	<script type="text/javascript">
+		$(function(){
+			alert("页面加载完成");
+		});
+	
+		function getText(){
+			//alert($("#tx").val());
+			
+			//alert($("input:eq(1)").val());
+			$("#tx").val("请输入用户名");
+			$("#d1").html("<select><option>张飞</option></select>");
+			//alert($("#d1").attr("id"));
+			
+			$("table tr:odd").each(function(){
+				//alert($(this).html());
+				this.style.backgroundColor = "red";
+			});
+			$("#tx").remove();
+		}
+		function addNode(){
+			$("body").append("<div>增加文本</div>");	
+			$("<div>增加文本</div>").appendTo($("body"));	
+			
+			$("body").prepend("<select></select>");
+			$("#d1").before("<input type='text' />");
+		}
+			function getCss(){
+				$("#d1").css(
+					{
+						width:"200px",
+						height:"200px",
+						border:"1px solid green"
+						
+					}
+				);
+				$("#d1").click(function(){
+					alert($(this).html());
+				});
+				
+				
+				//alert($("#d1").css("border"));	
+		}
+	</script>
+</head>
+
+<body>
+	<input id="tx" type="text" /><input type="button" onclick="getText()" value="获取内容" />
+	<input type="button" onclick="addNode()" value="增加"/>
+		<input type="button" onclick="getCss()" value="获取CSS"/>
+	<div style="width:100px;height:100px" id="d1">文本内容</div>
+	<table border="1">
+		<tr>
+			<td>张三</td>
+			<td>95</td>			
+		</tr>
+		<tr>
+			<td>李四</td>
+			<td>78</td>			
+		</tr>
+		<tr>
+			<td>王五</td>
+			<td>50</td>			
+		</tr>
+		<tr>
+			<td>小二</td>
+			<td>88</td>			
+		</tr>		
+	</table>
+</body>
+</html>

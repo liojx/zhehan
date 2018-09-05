@@ -1,0 +1,71 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+<title>无标题文档</title>
+<style type="text/javascript">
+	div label{
+		margin:10px;
+	}
+</style>
+<script type="text/javascript">
+	function searchScore(){
+		var labels = document.getElementsByTagName("label");		
+		var tx = document.getElementById("kh1");
+		for(var i = 0;i < labels.length;i++){
+			if(labels[i].innerHTML == tx.value){
+//			alert(labels[i].innerHTML);
+				showScore(tx.value,labels[i].nextSibling.innerHTML);		
+			}
+		}
+	}	
+	function showScore(name,score){
+		var zk = document.getElementById("zk1");
+		var cj = document.getElementById("cj1");		
+		zk.innerHTML = name;
+
+		switch(parseInt(score/10)){
+			case 10:
+			case 9:cj.innerHTML = "优秀";break;
+			case 8:
+			case 7:cj.innerHTML = "良好";break;
+			case 6:cj.innerHTML = "及格";break;
+			default:cj.innerHTML = "不及格";break;
+		}
+		
+	}
+</script>
+</head>
+
+<body>
+<label>考号</label>
+<p><input type="text" id="kh1">
+  <input type="button"  value="查询" onclick="searchScore()">
+</p>
+<p><br/>
+</p>
+<table width="200" border="1">
+  <tr>
+    <td>状况</td>
+    <td>成绩</td>
+  </tr>
+  <tr>
+    <td id="zk1">&nbsp;</td>
+    <td id="cj1">&nbsp;</td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+<div id="data">
+	<label>001</label><label>92</label><br>
+	<label>002</label><label>56</label><br>
+	<label>003</label><label>63</label><br>
+	<label>004</label><label>87</label><br>
+	<label>005</label><label>65</label><br>
+	<label>006</label><label>57</label><br>
+	<label>007</label><label>89</label><br>
+	<label>008</label><label>48</label><br>
+	<label>009</label><label>77</label><br>
+	<label>010</label><label>66</label><br>
+</div>
+</body>
+</html>

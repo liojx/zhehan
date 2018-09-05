@@ -1,0 +1,214 @@
+概述   
+一个浮动的窗口，包含标题和内容两部分。可以移动，调整大小，以及关闭图标'×'。   
+如果内容长度超过了对话框内容区域的显示，则会自动出现滚动条。   
+除此之外，还有一些常用的选项，如：添加底部按钮栏、模式窗口屏蔽层等。   
+官方示例地址：http://jqueryui.com/demos/dialog/   
+    
+·参数（名称 : 参数类型 : 默认值）   
+autoOpen : Boolean : true   
+  如果设置为true，则默认页面加载完毕后，就自动弹出对话框；相反则处理hidden状态。   
+  初始：$('.selector').dialog({ autoOpen: false });   
+  获取：var autoOpen = $('.selector').dialog('option', 'autoOpen');   
+  设置：$('.selector').dialog('option', 'autoOpen', false);   
+    
+bgiframe : Boolean : false   
+  如果设置为true，则调用bgiframe插件，用于修复在IE6浏览器中无法显示于其它控件（select,flash）之上的问题。   
+  初始：$('.selector').dialog({ bgiframe: true });   
+  获取：var bgiframe = $('.selector').dialog('option', 'bgiframe');   
+  设置：$('.selector').dialog('option', 'bgiframe', true);   
+    
+buttons : Object : { }   
+  为对话框添加相应的按钮及处理函数。   
+  初始：$('.selector').dialog({ buttons: { "Ok": function() { $(this).dialog("close"); } } });   
+  获取：var buttons = $('.selector').dialog('option', 'buttons');   
+  设置：$('.selector').dialog('option', 'buttons', { "Ok": function() { $(this).dialog("close"); } });   
+    
+closeOnEscape : Boolean : true   
+  设置当对话框打开的时候，用户按ESC键是否关闭对话框。   
+  初始：$('.selector').dialog({ closeOnEscape: false });   
+  获取：var closeOnEscape = $('.selector').dialog('option', 'closeOnEscape');   
+  设置：$('.selector').dialog('option', 'closeOnEscape', false);   
+    
+dialogClass : String : ''   
+  设置指定的类名称，它将显示于对话框的标题处。   
+  初始：$('.selector').dialog({ dialogClass: 'alert' });   
+  获取：var dialogClass = $('.selector').dialog('option', 'dialogClass');   
+  设置：$('.selector').dialog('option', 'dialogClass', 'alert');   
+    
+draggable : Boolean : true   
+  如果设置为true，则允许拖动对话框的标题栏移动窗口。   
+  初始：$('.selector').dialog({ draggable: false });   
+  获取：var draggable = $('.selector').dialog('option', 'draggable');   
+  设置：$('.selector').dialog('option', 'draggable', false);   
+    
+height : Number : 'auto'   
+  设置对话框的高度（单位：像素）。   
+  初始：$('.selector').dialog({ height: 530 });   
+  获取：var height = $('.selector').dialog('option', 'height');   
+  设置：$('.selector').dialog('option', 'height', 530);   
+    
+hide : String : null   
+  使对话框关闭（隐藏），可添加动画效果。   
+  初始：$('.selector').dialog({ hide: 'slide' });   
+  获取：var hide = $('.selector').dialog('option', 'hide');   
+  设置：$('.selector').dialog('option', 'hide', 'slide');   
+    
+maxHeight : Number : false   
+  设置对话框的最大高度（单位：像素）。   
+  初始：$('.selector').dialog({ maxHeight: 400 });   
+  获取：var maxHeight = $('.selector').dialog('option', 'maxHeight');   
+  设置：$('.selector').dialog('option', 'maxHeight', 400);   
+    
+maxWidth : Number : false   
+  设置对话框的最大宽度（单位：像素）。   
+  初始：$('.selector').dialog({ maxWidth: 600 });   
+  获取：var maxWidth = $('.selector').dialog('option', 'maxWidth');   
+  设置：$('.selector').dialog('option', 'maxWidth', 600);   
+    
+minHeight : Number : 150   
+  设置对话框的最小高度（单位：像素）。   
+  初始：$('.selector').dialog({ minHeight: 300 });   
+  获取：var minHeight = $('.selector').dialog('option', 'minHeight');   
+  设置：$('.selector').dialog('option', 'minHeight', 300);   
+    
+minWidth : Number : 150   
+  设置对话框的最小宽度（单位：像素）。   
+  初始：$('.selector').dialog({ minWidth: 400 });   
+  获取：var minWidth = $('.selector').dialog('option', 'minWidth');   
+  设置：$('.selector').dialog('option', 'minWidth', 400);   
+    
+modal : Boolean : false   
+  是否为模式窗口。如果设置为true，则在页面所有元素之前有个屏蔽层。   
+  初始：$('.selector').dialog({ modal: true });   
+  获取：var modal = $('.selector').dialog('option', 'modal');   
+  设置：$('.selector').dialog('option', 'modal', true);   
+    
+position : String, Array : 'center'   
+  设置对话框的初始显示位置。可选值: 'center', 'left', 'right', 'top', 'bottom', 或是一个数组['right','top']   
+  初始：$('.selector').dialog({ position: 'top' });   
+  获取：var position = $('.selector').dialog('option', 'position');   
+  设置：$('.selector').dialog('option', 'position', 'top');   
+    
+resizable : Boolean : true   
+  设置对话框是否可以调整大小。   
+  初始：$('.selector').dialog({ resizable: false });   
+  获取：var resizable = $('.selector').dialog('option', 'resizable');   
+  设置：$('.selector').dialog('option', 'resizable', false);   
+    
+show : String : null   
+  用于显示对话框。   
+  初始：$('.selector').dialog({ show: 'slide' });   
+  获取：var show = $('.selector').dialog('option', 'show');   
+  设置：$('.selector').dialog('option', 'show', 'slide');   
+    
+stack : Boolean : true   
+  设置移动时对话框是否前置于其它的对话框前面。   
+  初始：$('.selector').dialog({ stack: false });   
+  获取：var stack = $('.selector').dialog('option', 'stack');   
+  设置：$('.selector').dialog('option', 'stack', false);   
+    
+title : String : ''   
+  指定对话框的标题，也可以在对话框附加元素的title属性中设置标题。   
+  初始：$('.selector').dialog({ title: 'Dialog Title' });   
+  获取：var title = $('.selector').dialog('option', 'title');   
+  设置：$('.selector').dialog('option', 'title', 'Dialog Title');   
+    
+width : Number : 300   
+  设置对话框的宽度（单位：像素）。   
+  $('.selector').dialog({ width: 460 });   
+  获取：var width = $('.selector').dialog('option', 'width');   
+  设置：$('.selector').dialog('option', 'width', 460);   
+    
+zIndex : Integer : 1000   
+  设置对话框的zindex值。   
+  初始：$('.selector').dialog({ zIndex: 3999 });   
+  获取：var zIndex = $('.selector').dialog('option', 'zIndex');   
+  设置：$('.selector').dialog('option', 'zIndex', 3999);   
+    
+    
+·事件   
+beforeclose : dialogbeforeclose   
+  当对话框关闭之前，触发此事件。如果返回false，则对话框仍然显示。   
+  初始：$('.selector').dialog({ beforeclose: function(event, ui) { ... } });   
+  绑定：$('.selector').bind('dialogbeforeclose', function(event, ui) { ... });   
+    
+open : dialogopen   
+  当对话框打开后，触发此事件。   
+  初始：$('.selector').dialog({ open: function(event, ui) { ... } });   
+  绑定：$('.selector').bind('dialogopen', function(event, ui) { ... });   
+    
+focus : dialogfocus   
+  当对话框获取焦点时，触发此事件。   
+  初始：$('.selector').dialog({ focus: function(event, ui) { ... } });   
+  绑定：$('.selector').bind('dialogfocus', function(event, ui) { ... });   
+    
+dragStart : dragStart   
+  当开始拖拽对话框移动时，触发此事件。   
+  初始：$('.selector').dialog({ dragStart: function(event, ui) { ... } });   
+  绑定：$('.selector').bind('dragStart', function(event, ui) { ... });   
+    
+drag : drag   
+  当拖拽对话框移动时，触发此事件。   
+  初始：$('.selector').dialog({ drag: function(event, ui) { ... } });   
+  绑定：$('.selector').bind('drag', function(event, ui) { ... });   
+    
+dragStop : dragStop   
+  当拖拽对话框动作结束时，触发此事件。   
+  初始：$('.selector').dialog({ dragStop: function(event, ui) { ... } });   
+  绑定：$('.selector').bind('dragStop', function(event, ui) { ... });   
+    
+resizeStart : resizeStart   
+  当开始改变对话框大小时，触发此事件。   
+  初始：$('.selector').dialog({ resizeStart: function(event, ui) { ... } });   
+  绑定：$('.selector').bind('resizeStart', function(event, ui) { ... });   
+    
+resize : resize   
+  当对话框大小改变时，触发此事件。   
+  初始：$('.selector').dialog({ resize: function(event, ui) { ... } });   
+  绑定：$('.selector').bind('resize', function(event, ui) { ... });   
+    
+resizeStop : resizeStop   
+  当对话框大小改变结束时，触发此事件。   
+  初始：$('.selector').dialog({ resizeStop: function(event, ui) { ... } });   
+  绑定：$('.selector').bind('resizeStop', function(event, ui) { ... });   
+    
+close : dialogclose   
+  当对话框关闭后，触发此事件。   
+  初始：$('.selector').dialog({ close: function(event, ui) { ... } });   
+  绑定：$('.selector').bind('dialogclose', function(event, ui) { ... });   
+    
+    
+·属性   
+destroy   
+  销毁对话框对象。   
+  用法：.dialog( 'destroy' )   
+    
+disable   
+  禁用对话框。   
+  用法：.dialog( 'disable' )   
+    
+enable   
+  启用对话框。   
+  用法：.dialog( 'enable' )   
+    
+option   
+  获取或设置对话框的属性。   
+  用法：.dialog( 'option' , optionName , [value] )   
+    
+close   
+  关闭对话框。   
+  用法：.dialog( 'close' )   
+    
+isOpen   
+  用于判断对话框是否处理打开状态。   
+  用法：.dialog( 'isOpen' )   
+    
+moveToTop   
+  将对话框移至最顶层显示。   
+  用法：.dialog( 'moveToTop' )   
+    
+open   
+  打开对话框。   
+  用法：.dialog( 'open' )
+
+ 
