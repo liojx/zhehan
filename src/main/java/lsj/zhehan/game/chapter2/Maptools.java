@@ -29,7 +29,7 @@ public class Maptools {
 	
 	static Map<String, Meta> allMap = new HashMap<String, Meta>();
 	
-	static List<Meta> allList = new ArrayList<Meta>();
+	List<Meta> allList = new ArrayList<Meta>();
 	
 	List<String> coordinateList = new ArrayList<String>();
 	
@@ -78,7 +78,7 @@ public class Maptools {
 	static boolean compare(Meta meta1, Meta meta2) {
 		boolean bool = false;
 		if(meta1 != null && meta2 != null) {
-			if(meta1.getX().equals(meta2.getX()) && meta1.getY().equals(meta1.getY())) {
+			if(meta1.getX().equals(meta2.getX()) && meta1.getY().equals(meta2.getY())) {
 				bool = true;
 			}
 		}
@@ -116,6 +116,31 @@ public class Maptools {
 				RandowMeta(meta, hasExit);
 			}
 		}
+		if(allList.size() == 0) {
+			Meta meta_fill = new Meta(meta.getX(),meta.getY());
+			meta_fill.setUp(meta.isUp());
+			meta_fill.setDown(meta.isDown());
+			meta_fill.setLeft(meta.isLeft());
+			meta_fill.setRight(meta.isRight());
+			allList.add(meta_fill);
+		}else {
+			boolean has = false;
+			for(Meta one : allList) {
+				if(compare(meta,one)) {
+					has = true;
+					meta = one;
+					break;
+				}
+			}
+			if(!has) {
+				Meta meta_fill = new Meta(meta.getX(),meta.getY());
+				meta_fill.setUp(meta.isUp());
+				meta_fill.setDown(meta.isDown());
+				meta_fill.setLeft(meta.isLeft());
+				meta_fill.setRight(meta.isRight());
+				allList.add(meta_fill);
+			}
+		}
 //		if(growMap.size() == 0) {
 //			Meta meta_fill = new Meta(meta.getX(),meta.getY());
 //			meta_fill.setUp(meta.isUp());
@@ -135,9 +160,9 @@ public class Maptools {
 //				growMap.put(new String(getXY(meta_fill)),meta_fill);
 //			}
 //		}
-		if(allMap.containsKey(getXY(meta))) {
-			
-		}
+//		if(allMap.containsKey(getXY(meta))) {
+//			System.out.println("已经存在得-------------"+meta);
+//		}
 		return meta;
 	}
 	
@@ -305,7 +330,7 @@ public class Maptools {
 		System.out.println(start);
 		do {
 			Meta next = moveNext(start,i);
-			System.out.println("next============>>>     "+next);
+//			System.out.println("next============>>>     "+next);
 			start = RandowMeta(next,true);
 			System.out.println(start);
 			i ++;
