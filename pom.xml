@@ -41,6 +41,12 @@
             <version>1.16.14</version>
         </dependency>
         
+        <!-- 引入tst -->
+        <dependency>
+        	<groupId>studiii</groupId>
+			<artifactId>zlsj-test</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+        </dependency>
 	</dependencies>
 
 	<build>
