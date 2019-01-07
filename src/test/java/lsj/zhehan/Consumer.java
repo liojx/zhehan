@@ -2,7 +2,7 @@ package lsj.zhehan;
 
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
-import studiii.zlsj_test.service.DubboTestService;
+//import studiii.zlsj_test.service.DubboTestService;
 
 
 /**
@@ -15,7 +15,7 @@ public class Consumer {
 		
 		ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext(new String[] {"consumer.xml"});
 	    context.start();
-	    DubboTestService dubboTestService = (DubboTestService)context.getBean("dubboTestService"); // 获取远程服务代理
-	    dubboTestService.getSome("AAAAAAAAAAAAAAAAAAAAAAAAAAA");// 执行远程方法
+//	    DubboTestService dubboTestService = (DubboTestService)context.getBean("dubboTestService"); // 获取远程服务代理
+//	    dubboTestService.getSome("AAAAAAAAAAAAAAAAAAAAAAAAAAA");// 执行远程方法
 	}
 }

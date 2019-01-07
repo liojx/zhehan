@@ -2,8 +2,6 @@ package lsj.zhehan.game.chapter2;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Hashtable;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.Random;
@@ -42,26 +40,61 @@ public class Maptools {
 //			System.out.println();
 //		}
 //		
-		Maptools mp = new Maptools();
-		allMap = mp.generateAllMap();
-		Meta meta = new Meta(0,0);
-		meta = mp.RandowMeta(meta, true);
+//		Maptools mp = new Maptools();
+//		allMap = mp.generateAllMap();
+//		Meta meta = new Meta(0,0);
+//		meta = mp.RandowMeta(meta, true);
 //		System.out.println(meta);
 //		System.out.println(mp.nextMeta(meta));
 		
 //		for(Meta m : mp.generateMap()) {
 //			System.out.println(m);
 //		}
-		mp.line(meta);
-//		for(int i = 0 ; i < HEIGHT ;i ++) {
-//			for(int j = 0; j < WIDTH ; j ++) {	
-//				System.out.print(j + "" + i);
-//				System.out.print(" ");
-//			}
-//			System.out.println();
-//		}
+//		mp.line(meta);
+		for(int i = 0 ; i < HEIGHT ;i ++) {
+			for(int j = 0; j < WIDTH ; j ++) {	
+				System.out.print(j + "" + i);
+				System.out.print(" ");
+			}
+			System.out.println();
+		}
 		
+		Maptools mt = new Maptools();
+		mt.generateWayOut();
 	}
+	
+	List<Meta> generateWayOut(){
+		Map<String,Meta> map = generateAllMap();
+		Meta first = new Meta();
+		first.setX(0);
+		first.setY(0);
+		List<Meta> wayOut = new ArrayList<Meta>();
+//		wayOut.add(first);
+		while(true) {
+			Meta next = lineMoveNext(first);
+			if(map.containsKey(getXY(next))) {
+				boolean exist = false;
+				for(Meta one : wayOut) {
+					if(next.getX() == one.getX() && next.getY() == one.getY()) {
+						exist = true;
+						break;
+					}
+				}
+				if(!exist) {
+					wayOut.add(new Meta(next.getX(),next.getY()));
+					first = next;
+				}
+			}
+			if(next.getX() == HEIGHT - 1 && next.getY() == HEIGHT -1) {
+				break;
+			}
+		}
+		for(Meta s : wayOut) {
+			System.out.println(s.toString());
+		}
+		return null;
+	}
+	
 	void allXY(){
 		List<Meta> list = new ArrayList<Meta>();
 		for(int i = 0 ; i < HEIGHT ;i ++) {
@@ -221,23 +254,27 @@ public class Maptools {
 	 * @param meta
 	 */
 	Meta moveLeft(Meta meta) {
-		meta.setX(meta.getX() - 1);
-		return meta;
+		Meta res = new Meta();
+		res.setX(meta.getX() - 1);
+		return new Meta(res.getX(),meta.getY());
 	}
 	
 	Meta moveUp(Meta meta) {
-		meta.setY(meta.getY() - 1);
-		return meta;
+		Meta res = new Meta();
+		res.setY(meta.getY() - 1);
+		return new Meta(meta.getX(),res.getY());
 	}
 	
 	Meta moveRight(Meta meta) {
-		meta.setX(meta.getX() + 1);
-		return meta;
+		Meta res = new Meta();
+		res.setX(meta.getX() + 1);
+		return new Meta(res.getX(),meta.getY());
 	}
 	
 	Meta moveDown(Meta meta) {
-		meta.setY(meta.getY() + 1);
-		return meta;
+		Meta res = new Meta();
+		res.setY(meta.getY() + 1);
+		return new Meta(meta.getX(),res.getY());
 	}
 	
 	synchronized Meta moveNext(Meta meta, int moveCount) {
@@ -321,6 +358,53 @@ public class Maptools {
 		return null;
 	}
 	
+	
+	synchronized Meta lineMoveNext(Meta meta) {
+		Meta next = new Meta();
+		Random rd = new Random();
+		int md = rd.nextInt(4) + 1;
+		switch(md) {
+			case 1 : {
+				next = moveRight(meta); 
+				if(next.getX() >= 0 && next.getX() < WIDTH) {
+					break;
+				}
+			}
+			case 2 : {
+				next = moveDown(meta); 
+				if(next.getY() >=0 && next.getY() < HEIGHT) {
+					break;
+				}
+			}
+			case 3 : 
+				{
+					next = moveLeft(meta);
+					if(next.getX() >= 0 && next.getX() < WIDTH) {
+						break;
+					}
+				}
+			case 4 :{
+				next = moveUp(meta);
+				if(next.getY() >=0 && next.getY() < HEIGHT) {
+					break;
+				}else {
+					while(true) {
+						Meta xy = notCanUseDIGUI(meta);
+						if(xy != null && xy.getX() >= 0 && xy.getX() < WIDTH && xy.getY() >=0 && xy.getY() < HEIGHT) {
+							next = xy;
+							break;
+						}
+					}
+				}
+			}
+			default : ;
+		}
+		return next;
+	}
+	
+	private Meta notCanUseDIGUI(Meta meta) {
+		return lineMoveNext(meta);
+	}
 	String getXY(Meta meta) {
 		return meta.getX() + "" + meta.getY() ;
  	}

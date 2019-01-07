@@ -51,5 +51,23 @@ public class Meta {
 		String r = String.valueOf(desc);
 		return r;
 	}
+
+	/**
+	 * @param up
+	 * @param down
+	 * @param left
+	 * @param right
+	 * @param x
+	 * @param y
+	 */
+	public Meta(boolean up, boolean down, boolean left, boolean right, Integer x, Integer y) {
+		super();
+		this.up = up;
+		this.down = down;
+		this.left = left;
+		this.right = right;
+		X = x;
+		Y = y;
+	}
 	
 }
